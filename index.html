@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestão de Atendimentos & Estoque</title>
+  <style>
+    /* Reset e estilos básicos */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    body {
+      background: #f4f7fc;
+      color: #333;
+      line-height: 1.6;
+    }
+    /* Menu de navegação */
+    header {
+      background: #4a90e2;
+      color: #fff;
+      padding: 20px 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      padding: 10px 15px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 4px;
+      transition: background 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav a:hover, nav a.active {
+      background: rgba(255,255,255,0.4);
+    }
+    /* Conteúdo principal */
+    .container {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .section {
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
+    /* Estilos dos formulários */
+    form {
+      margin: 20px 0;
+    }
+    form .form-group {
+      margin-bottom: 15px;
+    }
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    form button {
+      background: #4a90e2;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    form button:hover {
+      background: #357ab8;
+    }
+    /* Tabelas e listas */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    table th {
+      background: #f4f4f4;
+    }
+    /* Cards de produtos na página de configurações */
+    .card {
+      background: #fff;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gestão de Atendimentos e Estoque</h1>
+    <nav>
+      <a href="#" class="nav-link active" data-section="clientes">Clientes</a>
+      <a href="#" class="nav-link" data-section="atendimentos">Atendimentos</a>
+      <a href="#" class="nav-link" data-section="estoque">Estoque</a>
+      <a href="#" class="nav-link" data-section="configuracoes">Configurações</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- Seção de Clientes -->
+    <section id="clientes" class="section active">
+      <h2>Cadastro de Clientes</h2>
+      <form id="formCliente">
+        <div class="form-group">
+          <label for="nomeCliente">Nome:</label>
+          <input type="text" id="nomeCliente" name="nomeCliente" required>
+        </div>
+        <div class="form-group">
+          <label for="emailCliente">E-mail:</label>
+          <input type="email" id="emailCliente" name="emailCliente">
+        </div>
+        <div class="form-group">
+          <label for="telefoneCliente">Telefone:</label>
+          <input type="tel" id="telefoneCliente" name="telefoneCliente">
+        </div>
+        <button type="submit">Salvar Cliente</button>
+      </form>
+      <div id="clientesList">
+        <!-- Lista de clientes (pode ser preenchida via integração com o Sheets) -->
+      </div>
+    </section>
+
+    <!-- Seção de Atendimentos -->
+    <section id="atendimentos" class="section">
+      <h2>Registro de Atendimentos</h2>
+      <form id="formAtendimento">
+        <div class="form-group">
+          <label for="dataAtendimento">Data e Hora:</label>
+          <input type="datetime-local" id="dataAtendimento" name="dataAtendimento" required>
+        </div>
+        <div class="form-group">
+          <label for="servicoAtendimento">Serviço:</label>
+          <select id="servicoAtendimento" name="servicoAtendimento" required>
+            <option value="">Selecione o serviço</option>
+            <option value="Lash Lifting">Lash Lifting</option>
+            <option value="Brow Lamination">Brow Lamination</option>
+            <option value="Design - 30 clientes">Design (R$30, 50 clientes)</option>
+            <option value="Design - 40 clientes">Design com Henna Makiaj (R$40, 50 clientes)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="valorCobrado">Valor Cobrado (R$):</label>
+          <input type="number" id="valorCobrado" name="valorCobrado" step="0.01" required>
+        </div>
+        <div class="form-group">
+          <label for="lucroObtido">Lucro Obtido (R$):</label>
+          <input type="number" id="lucroObtido" name="lucroObtido" step="0.01" required>
+        </div>
+        <button type="submit">Registrar Atendimento</button>
+      </form>
+      <div id="atendimentosList">
+        <!-- Lista de atendimentos -->
+      </div>
+    </section>
+
+    <!-- Seção de Estoque -->
+    <section id="estoque" class="section">
+      <h2>Controle de Estoque</h2>
+      <form id="formEstoque">
+        <div class="form-group">
+          <label for="produtoNome">Produto:</label>
+          <input type="text" id="produtoNome" name="produtoNome" required>
+        </div>
+        <div class="form-group">
+          <label for="produtoQuantidade">Quantidade em Estoque:</label>
+          <input type="number" id="produtoQuantidade" name="produtoQuantidade" required>
+        </div>
+        <button type="submit">Atualizar Estoque</button>
+      </form>
+      <div id="estoqueList">
+        <!-- Lista de produtos do estoque -->
+      </div>
+    </section>
+
+    <!-- Seção de Configurações -->
+    <section id="configuracoes" class="section">
+      <h2>Parâmetros e Custos</h2>
+      <div class="card">
+        <h3>Lash Lifting</h3>
+        <p>Kit: R$187,92</p>
+        <p>Cola: R$69,90</p>
+        <p>Tintura: R$62,90</p>
+        <p>OX: R$37,90</p>
+        <p>Nutrição: R$180,41</p>
+        <p>Cotonete (120 uni): R$4,90</p>
+        <p>Aplicador de batom (50 uni): R$7,99</p>
+        <p>Escovinha (50 uni): R$11,89</p>
+        <p>Plástico filme: R$15</p>
+        <p>Custo por cliente: R$11,58 (total R$578,81 dividido por 50 clientes)</p>
+      </div>
+      <div class="card">
+        <h3>Brow Lamination</h3>
+        <p>Kit: R$187,92</p>
+        <p>Tintura: R$62,90</p>
+        <p>OX: R$37,90</p>
+        <p>Nutrição: R$180,41</p>
+        <p>Cotonete (120 uni): R$4,90</p>
+        <p>Escovinha (50 uni): R$11,89</p>
+        <p>Plástico filme: R$15</p>
+        <p>Custo por cliente: R$12,53 (total R$500,92 dividido por 40 clientes)</p>
+      </div>
+      <div class="card">
+        <h3>Design (R$30 para 50 clientes)</h3>
+        <p>Esfoliante: R$20,59</p>
+        <p>Sabonete de glicerina: R$17,99</p>
+        <p>Tônico: R$30</p>
+        <p>Cera: R$30</p>
+        <p>Creme calmante: R$20</p>
+        <p>Gilete: R$50</p>
+      </div>
+      <div class="card">
+        <h3>Design com Henna Makiaj (R$40 para 50 clientes)</h3>
+        <p>Esfoliante: R$20,59</p>
+        <p>Sabonete de glicerina: R$17,99</p>
+        <p>Tônico: R$30</p>
+        <p>Cera: R$30</p>
+        <p>Creme calmante: R$20</p>
+        <p>Gilete: R$50</p>
+        <p>Henna Makiaj: R$15</p>
+      </div>
+      <!-- Aqui você pode adicionar inputs para editar os parâmetros -->
+      <form id="formConfig">
+        <h3>Atualizar Parâmetros</h3>
+        <div class="form-group">
+          <label for="paramServico">Serviço:</label>
+          <select id="paramServico" name="paramServico" required>
+            <option value="">Selecione o serviço</option>
+            <option value="lashLifting">Lash Lifting</option>
+            <option value="browLamination">Brow Lamination</option>
+            <option value="design30">Design (R$30)</option>
+            <option value="design40">Design com Henna Makiaj (R$40)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="novoCusto">Novo Custo por Cliente (R$):</label>
+          <input type="number" id="novoCusto" name="novoCusto" step="0.01" required>
+        </div>
+        <button type="submit">Atualizar Parâmetro</button>
+      </form>
+    </section>
+  </div>
+
+  <script>
+    // Variável para armazenar a URL do Google Apps Script
+    // Configure a URL do seu Web App do Google Apps Script aqui:
+    const googleScriptURL = "https://script.google.com/macros/s/AKfycbwAy8-xTEb8Hfvz-XDTOjjysPQ01WIM9785RLMEavQWeHpm4_q4Ybp9ldJjdQCO5OPiEw/exec";
+
+    // Função para alternar entre seções do site
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Remove classe ativa de todas as seções e links
+        navLinks.forEach(item => item.classList.remove('active'));
+        sections.forEach(sec => sec.classList.remove('active'));
+        // Ativa o link clicado e a seção correspondente
+        link.classList.add('active');
+        const sectionID = link.getAttribute('data-section');
+        document.getElementById(sectionID).classList.add('active');
+      });
+    });
+
+    // Exemplo de integração: Envio de dados para o Google Sheets via Apps Script
+    function enviarDadosParaSheets(dados, acao) {
+      // 'acao' pode ser "cadastrarCliente", "registrarAtendimento", "atualizarEstoque" ou "atualizarConfig"
+      fetch(googleScriptURL, {
+        method: 'POST',
+        mode: 'no-cors', // ou 'cors' conforme a configuração do seu Apps Script
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ acao, dados })
+      })
+      .then(response => {
+        // Se necessário, processe a resposta
+        console.log('Dados enviados com sucesso:', response);
+      })
+      .catch(error => console.error('Erro ao enviar dados:', error));
+    }
+
+    // Manipulação dos formulários
+
+    // Formulário de Clientes
+    const formCliente = document.getElementById('formCliente');
+    formCliente.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const dadosCliente = {
+        nome: document.getElementById('nomeCliente').value,
+        email: document.getElementById('emailCliente').value,
+        telefone: document.getElementById('telefoneCliente').value
+      };
+      enviarDadosParaSheets(dadosCliente, "cadastrarCliente");
+      alert('Cliente cadastrado!');
+      formCliente.reset();
+    });
+
+    // Formulário de Atendimentos
+    const formAtendimento = document.getElementById('formAtendimento');
+    formAtendimento.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const dadosAtendimento = {
+        dataHora: document.getElementById('dataAtendimento').value,
+        servico: document.getElementById('servicoAtendimento').value,
+        valorCobrado: document.getElementById('valorCobrado').value,
+        lucroObtido: document.getElementById('lucroObtido').value
+      };
+      enviarDadosParaSheets(dadosAtendimento, "registrarAtendimento");
+      alert('Atendimento registrado!');
+      formAtendimento.reset();
+    });
+
+    // Formulário de Estoque
+    const formEstoque = document.getElementById('formEstoque');
+    formEstoque.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const dadosEstoque = {
+        produto: document.getElementById('produtoNome').value,
+        quantidade: document.getElementById('produtoQuantidade').value
+      };
+      enviarDadosParaSheets(dadosEstoque, "atualizarEstoque");
+      alert('Estoque atualizado!');
+      formEstoque.reset();
+    });
+
+    // Formulário de Configurações
+    const formConfig = document.getElementById('formConfig');
+    formConfig.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const dadosConfig = {
+        servico: document.getElementById('paramServico').value,
+        novoCusto: document.getElementById('novoCusto').value
+      };
+      enviarDadosParaSheets(dadosConfig, "atualizarConfig");
+      alert('Parâmetro atualizado!');
+      formConfig.reset();
+    });
+
+    // OBSERVAÇÃO:
+    // Para integrar com o Google Sheets, você deve:
+    // 1. Criar uma nova planilha no Google Sheets.
+    // 2. No menu da planilha, acesse Extensões > Apps Script e crie um script que receba os dados (por exemplo, utilizando doPost) e grave-os na planilha.
+    // 3. Publique o script como um Web App (é importante definir as permissões de acesso corretamente).
+    // 4. Atualize a variável googleScriptURL com a URL do seu Web App.
+    // Dessa forma, os formulários enviarão os dados para a planilha automaticamente.
+  </script>
+</body>
+</html>
