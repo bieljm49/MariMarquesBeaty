@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="logo.jpg" type="image/x-icon">
-  <title>Mari Beaty | Gestão </title>
+  <title>Mari Beauty | Gestão </title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Style.css">
 
@@ -15,11 +15,9 @@
     <nav>
       
       <ul>
-        <li><a href="#" class="nav-link active" data-section="clientes">Cadastro de clientes</a>
-        <li><a href="#" class="nav-link" data-section="atendimentos">Atendimentos</a>
-        <!--<li><a href="#" class="nav-link" data-section="estoque">Estoque</a> -->
-        <!--<li><a href="#" class="nav-link" data-section="configuracoes">Configurações</a>-->
-        
+        <li><a href="#" class="nav-link active" data-section="clientes">Cadastro de clientes</a></li>
+        <li><a href="#" class="nav-link" data-section="atendimentos">Atendimentos</a></li>
+                
       </ul>
     </nav>
   </header>
@@ -39,8 +37,22 @@
         </div>
         <div class="form-group">
           <label for="telefoneCliente">Telefone:</label>
-          <input type="tel" id="telefoneCliente" name="telefoneCliente" placeholder="Digite o celular">
+          <input type="tel" id="telefoneCliente" name="telefoneCliente" required placeholder="Digite o celular">
         </div>
+        <div class="form-group">
+          <label for="dtNascimento">Data de Nascimento:</label>
+          <input type="text" id="dtNascimento" name="dtNascimento" required placeholder="Digite a Data de Nascimento">
+        </div>
+        <div class="form-group">
+          <label for="bairro">Qual é o seu bairro?:</label>
+          <input type="text" id="bairro" name="bairro" required placeholder="Digite seu bairro">
+        </div>
+        <div class="form-group">
+          <label for="observacao">Observacao:</label>
+          <input type="text" id="observacao" name="observacao" placeholder="Digite sua Observacao">
+        </div>
+        <hr>
+        <br>
         <button type="submit">Salvar Cliente</button>
       </form>
       <div id="clientesList">
@@ -62,8 +74,8 @@
             <option value="">Selecione o serviço</option>
             <option value="Lash Lifting">Lash Lifting</option>
             <option value="Brow Lamination">Brow Lamination</option>
-            <option value="Design - 30 clientes">Design (R$30, 50 clientes)</option>
-            <option value="Design - 40 clientes">Design com Henna Makiaj (R$40, 50 clientes)</option>
+            <option value="Design Simples">Design Simples</option>
+            <option value="Design com Henna">Design C/ Henna</option>
           </select>
         </div>
         <div class="form-group">
@@ -71,113 +83,29 @@
           <input type="number" id="valorCobrado" name="valorCobrado" step="0.01" required>
         </div>
         <div class="form-group">
-         <!-- <label for="lucroObtido">Lucro Obtido (R$):</label>-->
-          <!--<input type="number" id="lucroObtido" name="lucroObtido" step="0.01" required>-->
+          <label for="formaPagamento">Forma Pagamento:</label>
+          <select id="formaPagamento" name="formaPagamento" required>
+            <option value="">Selecione a forma de pagamento</option>
+            <option value="Pix">Pix</option>
+            <option value="Credito a vista">Credito à vista</option>
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="Credito + 2x">Credito + 2x</option>
+          </select>
         </div>
         <button type="submit">Registrar Atendimento</button>
       </form>
-      <div id="atendimentosList">
-        <!-- Lista de atendimentos -->
-      </div>
-    </section>
-
-    <!-- Seção de Estoque -->
-    <section id="estoque" class="section">
-      <h2>Controle de Estoque</h2>
-      <form id="formEstoque">
-        <div class="form-group">
-          <label for="produtoNome">Produto:</label>
-          <input type="text" id="produtoNome" name="produtoNome" required>
-        </div>
-        <div class="form-group">
-          <label for="produtoQuantidade">Quantidade em Estoque:</label>
-          <input type="number" id="produtoQuantidade" name="produtoQuantidade" required>
-        </div>
-        <button type="submit">Atualizar Estoque</button>
-      </form>
-      <div id="estoqueList">
-        <!-- Lista de produtos do estoque -->
-      </div>
-    </section>
-
-    <!-- Seção de Configurações -->
-    <section id="configuracoes" class="section">
-      <h2>Parâmetros e Custos</h2>
-      <div class="card">
-        <h3>Lash Lifting</h3>
-        <p>Kit: R$187,92</p>
-        <p>Cola: R$69,90</p>
-        <p>Tintura: R$62,90</p>
-        <p>OX: R$37,90</p>
-        <p>Nutrição: R$180,41</p>
-        <p>Cotonete (120 uni): R$4,90</p>
-        <p>Aplicador de batom (50 uni): R$7,99</p>
-        <p>Escovinha (50 uni): R$11,89</p>
-        <p>Plástico filme: R$15</p>
-        <p>Custo por cliente: R$11,58 (total R$578,81 dividido por 50 clientes)</p>
-      </div>
-      <div class="card">
-        <h3>Brow Lamination</h3>
-        <p>Kit: R$187,92</p>
-        <p>Tintura: R$62,90</p>
-        <p>OX: R$37,90</p>
-        <p>Nutrição: R$180,41</p>
-        <p>Cotonete (120 uni): R$4,90</p>
-        <p>Escovinha (50 uni): R$11,89</p>
-        <p>Plástico filme: R$15</p>
-        <p>Custo por cliente: R$12,53 (total R$500,92 dividido por 40 clientes)</p>
-      </div>
-      <div class="card">
-        <h3>Design (R$30 para 50 clientes)</h3>
-        <p>Esfoliante: R$20,59</p>
-        <p>Sabonete de glicerina: R$17,99</p>
-        <p>Tônico: R$30</p>
-        <p>Cera: R$30</p>
-        <p>Creme calmante: R$20</p>
-        <p>Gilete: R$50</p>
-      </div>
-      <div class="card">
-        <h3>Design com Henna Makiaj (R$40 para 50 clientes)</h3>
-        <p>Esfoliante: R$20,59</p>
-        <p>Sabonete de glicerina: R$17,99</p>
-        <p>Tônico: R$30</p>
-        <p>Cera: R$30</p>
-        <p>Creme calmante: R$20</p>
-        <p>Gilete: R$50</p>
-        <p>Henna Makiaj: R$15</p>
-      </div>
-      <!-- Aqui você pode adicionar inputs para editar os parâmetros -->
-      <form id="formConfig">
-        <h3>Atualizar Parâmetros</h3>
-        <div class="form-group">
-          <label for="paramServico">Serviço:</label>
-          <select id="paramServico" name="paramServico" required>
-            <option value="">Selecione o serviço</option>
-            <option value="lashLifting">Lash Lifting</option>
-            <option value="browLamination">Brow Lamination</option>
-            <option value="design30">Design (R$30)</option>
-            <option value="design40">Design com Henna Makiaj (R$40)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="novoCusto">Novo Custo por Cliente (R$):</label>
-          <input type="number" id="novoCusto" name="novoCusto" step="0.01" required>
-        </div>
-        <button type="submit">Atualizar Parâmetro</button>
-      </form>
     </section>
   </div>
-
   
   <footer>
-    <p style="text-align: center">&copy; 2025 Mariana Marques Beaty. Todos os direitos reservados.</p>
+    <p style="text-align: center">&copy; 2025 Mariana Marques Beauty. Todos os direitos reservados.</p>
     <p style="text-align: center">&spades; v26032025</p>
   </footer>
 
   <script>
     // Variável para armazenar a URL do Google Apps Script
     // Configure a URL do seu Web App do Google Apps Script aqui:
-    const googleScriptURL = "https://script.google.com/macros/s/AKfycbwAy8-xTEb8Hfvz-XDTOjjysPQ01WIM9785RLMEavQWeHpm4_q4Ybp9ldJjdQCO5OPiEw/exec";
+    const googleScriptURL = "https://script.google.com/macros/s/AKfycbxEr7qaYyIgF2tFKzMgsgflXf2eOP4h8ybM2lwxPTjJPqC071RhioGng9hf81QiZmck6g/exec";
 
     // Função para alternar entre seções do site
     const navLinks = document.querySelectorAll('.nav-link');
@@ -223,7 +151,10 @@
       const dadosCliente = {
         nome: document.getElementById('nomeCliente').value,
         email: document.getElementById('emailCliente').value,
-        telefone: document.getElementById('telefoneCliente').value
+        telefone: document.getElementById('telefoneCliente').value,
+        dtNascimento: document.getElementById('dtNascimento').value,
+        bairro: document.getElementById('bairro').value,
+        observacao: document.getElementById('observacao').value
       };
       enviarDadosParaSheets(dadosCliente, "cadastrarCliente");
       alert('Cliente cadastrado!');
@@ -238,39 +169,16 @@
         dataHora: document.getElementById('dataAtendimento').value,
         servico: document.getElementById('servicoAtendimento').value,
         valorCobrado: document.getElementById('valorCobrado').value,
-        lucroObtido: document.getElementById('lucroObtido').value
+        formaPagamento: document.getElementById('formaPagamento').value
       };
       enviarDadosParaSheets(dadosAtendimento, "registrarAtendimento");
       alert('Atendimento registrado!');
       formAtendimento.reset();
     });
 
-    // Formulário de Estoque
-    const formEstoque = document.getElementById('formEstoque');
-    formEstoque.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const dadosEstoque = {
-        produto: document.getElementById('produtoNome').value,
-        quantidade: document.getElementById('produtoQuantidade').value
-      };
-      enviarDadosParaSheets(dadosEstoque, "atualizarEstoque");
-      alert('Estoque atualizado!');
-      formEstoque.reset();
-    });
+    
 
-    // Formulário de Configurações
-    const formConfig = document.getElementById('formConfig');
-    formConfig.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const dadosConfig = {
-        servico: document.getElementById('paramServico').value,
-        novoCusto: document.getElementById('novoCusto').value
-      };
-      enviarDadosParaSheets(dadosConfig, "atualizarConfig");
-      alert('Parâmetro atualizado!');
-      formConfig.reset();
-    });
-
+    
     // OBSERVAÇÃO:
     // Para integrar com o Google Sheets, você deve:
     // 1. Criar uma nova planilha no Google Sheets.
