@@ -3,126 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gestão de Atendimentos & Estoque</title>
-  <style>
-    /* Reset e estilos básicos */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Arial', sans-serif;
-    }
-    body {
-      background: #f4f7fc;
-      color: #333;
-      line-height: 1.6;
-    }
-    /* Menu de navegação */
-    header {
-      background: #4a90e2;
-      color: #fff;
-      padding: 20px 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    header h1 {
-      text-align: center;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 15px;
-      padding: 10px 15px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 4px;
-      transition: background 0.3s ease;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    nav a:hover, nav a.active {
-      background: rgba(255,255,255,0.4);
-    }
-    /* Conteúdo principal */
-    .container {
-      max-width: 1100px;
-      margin: 20px auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .section {
-      display: none;
-    }
-    .section.active {
-      display: block;
-    }
-    /* Estilos dos formulários */
-    form {
-      margin: 20px 0;
-    }
-    form .form-group {
-      margin-bottom: 15px;
-    }
-    form label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-    form input, form select, form textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-    }
-    form button {
-      background: #4a90e2;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    form button:hover {
-      background: #357ab8;
-    }
-    /* Tabelas e listas */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    table th, table td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
-    table th {
-      background: #f4f4f4;
-    }
-    /* Cards de produtos na página de configurações */
-    .card {
-      background: #fff;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      margin-bottom: 15px;
-    }
-  </style>
+  <link rel="icon" href="logo.jpg" type="image/x-icon">
+  <title>Mari Beaty | Gestão </title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Css/Style.css">
+
 </head>
 <body>
   <header>
     <h1>Gestão de Atendimentos e Estoque</h1>
     <nav>
-      <a href="#" class="nav-link active" data-section="clientes">Clientes</a>
-      <a href="#" class="nav-link" data-section="atendimentos">Atendimentos</a>
-      <a href="#" class="nav-link" data-section="estoque">Estoque</a>
-      <a href="#" class="nav-link" data-section="configuracoes">Configurações</a>
+      
+      <ul>
+        <li><a href="#" class="nav-link active" data-section="clientes">Cadastro de clientes</a>
+        <li><a href="#" class="nav-link" data-section="atendimentos">Atendimentos</a>
+        <!--<li><a href="#" class="nav-link" data-section="estoque">Estoque</a> -->
+        <!--<li><a href="#" class="nav-link" data-section="configuracoes">Configurações</a>-->
+        
+      </ul>
     </nav>
   </header>
 
@@ -133,15 +31,15 @@
       <form id="formCliente">
         <div class="form-group">
           <label for="nomeCliente">Nome:</label>
-          <input type="text" id="nomeCliente" name="nomeCliente" required>
+          <input type="text" id="nomeCliente" name="nomeCliente" required placeholder="Digite o nome do cliente">
         </div>
         <div class="form-group">
           <label for="emailCliente">E-mail:</label>
-          <input type="email" id="emailCliente" name="emailCliente">
+          <input type="email" id="emailCliente" name="emailCliente" placeholder="Digite o e-mail do cliente">
         </div>
         <div class="form-group">
           <label for="telefoneCliente">Telefone:</label>
-          <input type="tel" id="telefoneCliente" name="telefoneCliente">
+          <input type="tel" id="telefoneCliente" name="telefoneCliente" placeholder="Digite o celular">
         </div>
         <button type="submit">Salvar Cliente</button>
       </form>
