@@ -1,6 +1,11 @@
 
 /* Reset básico */
 
+img {
+  padding: 5px;
+  width: 100px;
+}
+
 nav ul {
   list-style: none;
   display: flex;
@@ -11,12 +16,13 @@ nav ul {
 }
 nav ul li a {
   color: whitesmoke;
+  background-color: #333;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s, transform 0.3s;
 }
 nav ul li a:hover {
-  color: white;
+  color: rgb(122, 120, 120);
   transform: translateY(-2px);
 }
 
@@ -39,7 +45,7 @@ p {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 footer {
-  background: linear-gradient(135deg, #ff0095, #48505f);
+  background: linear-gradient(135deg, #f4eeec, #48505f);
   color: #fff;
   text-align: center;
   padding: 1rem;
@@ -81,6 +87,11 @@ nav a:hover {
 text-shadow: 2px 2px 5px rgba(219, 211, 211, 0.5); /* Sombra ao passar o mouse */
 }
 
+.nav-link.active {
+  background-color: white;
+  color: #2c2f35;
+  border: 2px solid #2f3a52; /* Borda branca, por exemplo */
+}
 
 
 
@@ -100,7 +111,8 @@ body {
   overflow-x: hidden;
 }
 header {
-  background: linear-gradient(135deg, #cb118d, #48505f);
+  background: whitesmoke;
+  
   color: #fff;
   padding: 1.5rem 0;
   text-align: center;
@@ -137,7 +149,7 @@ header {
       max-width: 650px;
       margin: 20px auto;
       padding: 20px;
-      background: white;
+      background: rgb(255, 255, 255);
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 
@@ -172,7 +184,7 @@ header {
     }
     form button {
       font-family: 'Montserrat', sans-serif;
-      background: #ff0095;
+      background: #000000;
       color: #fff;
       padding: 10px 20px;
       border: none;
